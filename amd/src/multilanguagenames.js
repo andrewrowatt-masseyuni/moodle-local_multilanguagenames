@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * TODO describe module multilanguagenames
+ * TODO describe module Multi-language section and activity names
  *
  * @module     local_multilanguagenames/multilanguagenames
  * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
@@ -25,7 +25,7 @@ import $ from 'jquery';
 
 export const init = () => {
     $(function() {
-        console.log("multilanguagenames module initialized");
+        console.log("Multi-language section and activity names (local_multilanguagenames) module initialized");
         // Add your module initialization code here
         $('#fitem_id_name').css('color', 'red');
     }

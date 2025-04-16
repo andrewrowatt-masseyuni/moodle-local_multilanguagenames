@@ -27,7 +27,7 @@ class before_standard_top_of_body_html_generation {
 
     /**
      * Callback implementations for Multi-language section and activity names
-     * 
+     *
      * @package    local_multilanguagenames
      * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
      * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
@@ -42,18 +42,20 @@ class before_standard_top_of_body_html_generation {
             return;
         }
         /* If the core setting enabled then exit */
-        if(!empty($CFG->formatstringstriptags)) {
+        if (!empty($CFG->formatstringstriptags)) {
             return;
         }
 
         $renderer = $hook->renderer;
         $output = $hook->get_output();
 
-        if ($PAGE->pagetype == 'course-editsection') {
-            // $hook->add_html('<div class="test1">This is a test"' . $PAGE->pagetype . '</div>');
+        // For discovery purposes only.
+        // $hook->add_html('<div class="test1">This is a test"' . $PAGE->pagetype . '</div>');.
+
+        if ($PAGE->pagetype == 'course-editsection' || $PAGE->pagetype == 'mod-forum-mod') {
             $PAGE->requires->js_call_amd('local_multilanguagenames/multilanguagenames', 'init');
         }
-        
+
         return;
     }
 }
