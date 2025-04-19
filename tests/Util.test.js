@@ -9,7 +9,8 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-import Util from './Util.js';
+// Mdlcode-disable-next-line
+import Util from '../amd/src/Util.js';
 
 test('1 multilang name', () => {
     const util = new Util('<span class="mlnc"><span lang="en">Welcome</span></span>');
