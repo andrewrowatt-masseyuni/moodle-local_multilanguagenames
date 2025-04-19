@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -22,12 +23,20 @@
  */
 
 import $ from 'jquery';
+import Util from 'local_multilanguagenames/Util';
 
 export const init = () => {
     $(function() {
+
         console.log("Multi-language section and activity names (local_multilanguagenames) module initialized");
         // Add your module initialization code here
         $('#fitem_id_name').css('color', 'red');
+
+        const idName = $('#id_name').val();
+        console.log(idName);
+
+        var util = new Util(idName);
+        console.log(util.multilanguageName);
     }
    );
 };
