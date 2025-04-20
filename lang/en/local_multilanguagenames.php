@@ -26,3 +26,4 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Multi-language section and activity names';
+$string['usemultilanguagenamehelp'] = '[[Usemultilanguagenamehelp lang]]';

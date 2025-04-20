@@ -1,0 +1,83 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_multilanguagenames/edit_form
+
+    TODO describe template edit_form
+
+    Example context (json):
+    {
+    }
+}}
+<div id="fitem_id_namemultilang_group" class="form-group">
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="usemultilanguagename" {{#multilanguageName}}checked="checked"{{/multilanguageName}} aria-describedby="usemultilanguagenamehelp">
+        <label class="form-check-label" for="usemultilanguagename">Use multi-language section name</label>
+        <small id="usemultilanguagenamehelp" class="text-muted d-block">{{#str}} usemultilanguagenamehelp, local_multilanguagenames {{/str}}</small>
+    </div>
+
+    <div id="namemultilang_group" class="{{^multilanguageName}}hidden{{/multilanguageName}}">
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="name1">Primary name</label>
+                <input type="text" class="form-control" id="name1" value="{{name1}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="name1lang">Language</label>
+                <select id="name1lang" class="form-control">
+                    <option value="en"{{#name1langen}} selected{{/name1langen}}>English - EN</option>
+                    <option value="mi"{{#name1langmi}} selected{{/name1langmi}}>Maori - MI</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="name2">Secondary name</label>
+                <input type="text" class="form-control" id="name2" value="{{name2}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="name2lang">Language</label>
+                <select id="name2lang" class="form-control">
+                    <option value="en"{{#name2langen}} selected{{/name2langen}}>English - EN</option>
+                    <option value="mi"{{#name2langmi}} selected{{/name2langmi}}>Maori - MI</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div id="name1" class="form-group col-md-9">
+                <label for="name3">Tertiary name</label>
+                <input type="text" class="form-control" id="name3" value="{{name3}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="name3lang">Language</label>
+                <select id="name3lang" class="form-control">
+                    <option value="en"{{#name3langen}} selected{{/name3langen}}>English - EN</option>
+                    <option value="mi"{{#name3langmi}} selected{{/name3langmi}}>Maori - MI</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+</div>
