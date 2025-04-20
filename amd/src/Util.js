@@ -27,7 +27,6 @@
 // https://regex101.com/r/bDAO3Z
 // https://regex101.com/r/Wsn3yl name fragment
 
-/* eslint-disable no-console */
 /* eslint-disable max-len */
 class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
@@ -106,9 +105,9 @@ class Util {
         /* Parse the sectionOrActivityName from a standard format e.g., from Paepae kōrero | Keeping in touch */
         let [name1, name2, name3] = this.sectionOrActivityName.trim().split(' | ');
 
-            console.log(name1);
-            console.log(name2);
-            console.log(name3);
+            window.console.log(name1);
+            window.console.log(name2);
+            window.console.log(name3);
     }
 
     /**
