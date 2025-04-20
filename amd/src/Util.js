@@ -18,7 +18,7 @@
  * TODO describe module Util
  *
  * @module     local_multilanguagenames/Util
- * @copyright  2025 2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
+ * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
