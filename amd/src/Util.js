@@ -27,10 +27,11 @@
 // https://regex101.com/r/bDAO3Z
 // https://regex101.com/r/Wsn3yl name fragment
 
+/* eslint-disable no-console */
 /* eslint-disable max-len */
 class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
-    static #NAME_REGEX_FRAGMENT = '<span lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
+    static #NAME_REGEX_FRAGMENT = '<span class="mln[1-3]" lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
     static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
     static #CONTAINER_END_REGEX_FRAGMENT = '<\\/span>';
 

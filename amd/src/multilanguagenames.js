@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 // This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
@@ -13,6 +12,9 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 
 /**
  * TODO describe module Multi-language section and activity names
