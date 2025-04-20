@@ -102,6 +102,10 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci mustache
 
+      - name: Grunt version AJR
+        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+        run: npx grunt --version
+        
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci grunt --max-lint-warnings 0
