@@ -28,11 +28,6 @@
         <input type="checkbox" class="form-check-input" id="usemultilanguagename" {{#multilanguageName}}checked="checked"{{/multilanguageName}} aria-describedby="usemultilanguagenamehelp">
         <label class="form-check-label" for="usemultilanguagename">Use multi-language section name</label>
         <small id="usemultilanguagenamehelp" class="text-muted d-block">{{#str}} usemultilanguagenamehelp, local_multilanguagenames {{/str}}</small>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="usestandardmultilanguagename" {{#multilanguageName}}checked="checked"{{/multilanguageName}} aria-describedby="usestandardmultilanguagenamehelp">
-            <label class="form-check-label" for="usestandardmultilanguagename">Use standard multi-language name</label>
-            <small id="usestandardmultilanguagenamehelp" class="text-muted d-block">{{#str}} usemultilanguagenamehelp, local_multilanguagenames {{/str}}</small>
-        </div>
     </div>
 
     <div id="namemultilang_group" class="{{^multilanguageName}}hidden{{/multilanguageName}}">
