@@ -32,6 +32,7 @@ class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
     static #NAME_REGEX_FRAGMENT = '<span class="mln[1-3]" lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
     static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
+    static #DIVIDER_PLAINTEXT_FRAGMENT = ' | ';
     static #CONTAINER_END_REGEX_FRAGMENT = '<\\/span>';
 
     static #NAME_REGEX = new RegExp(`${Util.#CONTAINER_START_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT}(?:${Util.#DIVIDER_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT}(?:${Util.#DIVIDER_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT})?)?${Util.#CONTAINER_END_REGEX_FRAGMENT}`, 'g');
@@ -117,6 +118,25 @@ class Util {
      */
     generateHTML() {
         return this.nameCount;
+    }
+
+    /**
+     * Generate the a plain text version of the multilanguage name.
+     *
+     * @returns @string
+     */
+    generatePlaintext() {
+        let plaintext = '';
+
+        if (this.nameCount === 1) {
+            plaintext = this.name1;
+        } else if (this.nameCount === 2) {
+            plaintext = `${this.name1}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name2}`;
+        } else if (this.nameCount === 3) {
+            plaintext = `${this.name1}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name2}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name3}`;
+        }
+
+        return plaintext;
     }
 }
 

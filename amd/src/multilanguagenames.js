@@ -58,8 +58,27 @@ export const init = () => {
             $(html).insertAfter('#fitem_id_name');
 
             $('#usemultilanguagename').on('change', function() {
-                $('#fitem_id_name').toggleClass('hidden');
-                $('#namemultilang_group').toggleClass('hidden');
+                if ($(this).is(':checked')) {
+                    $('#fitem_id_name').addClass('hidden');
+                    $('#fitem_id_name_shadow').removeClass('hidden');
+                    $('#namemultilang_group').removeClass('hidden');
+                } else {
+                    $('#id_name').val($('#id_name_shadow').val());
+                    $('#fitem_id_name').removeClass('hidden');
+                    $('#fitem_id_name_shadow').addClass('hidden');
+                    $('#namemultilang_group').addClass('hidden');
+                }
+            });
+
+            $('#namemultilang_group').on('change', function() {
+                const name1 = $('#name1').val();
+                const name2 = $('#name2').val();
+                const name3 = $('#name3').val();
+
+                var util = new Util(name1, $('#name1lang').val(), name2, $('#name2lang').val(), name3, $('#name3lang').val());
+
+                $('#id_name_shadow').val(util.generatePlaintext());
+                $('#id_name').val(util.generateHTML());
             });
         })
         .catch((error) => displayException(error));

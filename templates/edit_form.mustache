@@ -23,6 +23,24 @@
     {
     }
 }}
+<div id="fitem_id_name_shadow" class="form-group  fitem  hidden">
+    <div>
+        <span class="float-md-right text-nowrap">
+            
+            
+            
+        </span>
+        <label class="col-form-label d-inline " for="id_name_shadow">
+            Section name <small>(Plain text version)</small>
+        </label>
+    </div>
+    <div class="form-inline felement" data-fieldtype="text">
+        <input type="text" class="form-control " id="id_name_shadow" value="" size="30" placeholder="" maxlength="255" pattern=".*\S+.*" data-initial-value="" disabled="disabled" style="width: 100%;">
+        <div class="form-control-feedback invalid-feedback" id="id_error_name">
+            
+        </div>
+    </div>
+</div>
 <div id="fitem_id_namemultilang_group" class="form-group">
     <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="usemultilanguagename" {{#multilanguageName}}checked="checked"{{/multilanguageName}} aria-describedby="usemultilanguagenamehelp">
@@ -49,7 +67,7 @@
         <div class="form-row">
             <div class="form-group col-md-9">
                 <label for="name2">Secondary name</label>
-                <input type="text" class="form-control" id="name2" value="{{name2}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
+                <input type="text" class="form-control" id="name2" value="{{name2}}" size="30" maxlength="255" pattern=".*\S+.*">
             </div>
 
             <div class="form-group col-md-3">
@@ -64,7 +82,7 @@
         <div class="form-row">
             <div class="form-group col-md-9">
                 <label for="name3">Tertiary name</label>
-                <input type="text" class="form-control" id="name3" value="{{name3}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
+                <input type="text" class="form-control" id="name3" value="{{name3}}" size="30" maxlength="255" pattern=".*\S+.*">
             </div>
 
             <div class="form-group col-md-3">
