@@ -70,7 +70,8 @@ export const init = () => {
                 }
             });
 
-            $('#namemultilang_group').on('change', function() {
+            $('#namemultilang_group input[type="text"]').on('input', function() {
+                window.console.log('name changed');
                 const name1 = $('#name1').val();
                 const name2 = $('#name2').val();
                 const name3 = $('#name3').val();
@@ -78,7 +79,9 @@ export const init = () => {
                 var util = new Util(name1, $('#name1lang').val(), name2, $('#name2lang').val(), name3, $('#name3lang').val());
 
                 $('#id_name_shadow').val(util.generatePlaintext());
+                html = util.generateHTML();
                 $('#id_name').val(util.generateHTML());
+                $('#namemultilang_preview').html(html);
             });
         })
         .catch((error) => displayException(error));

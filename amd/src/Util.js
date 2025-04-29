@@ -73,6 +73,7 @@ class Util {
     }
 
     #parseName() {
+        // To-do: Remove [] from right hand side
         let [match] = [...this.sectionOrActivityName.matchAll(Util.#NAME_REGEX, 'g')];
 
         if (match) {
@@ -117,7 +118,7 @@ class Util {
      * @returns @string
      */
     generateHTML() {
-        return this.nameCount;
+        return `<b>${this.nameCount}</b>`;
     }
 
     /**
