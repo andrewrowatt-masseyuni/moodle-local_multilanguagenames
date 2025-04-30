@@ -45,109 +45,56 @@
 <div id="namemultilang_group_container" class="">
     <div class="form-group form-check">
         <input type="checkbox" class="form-check-input" id="usemultilanguagename" {{#multilanguageName}}checked="checked"{{/multilanguageName}} aria-describedby="usemultilanguagenamehelp">
-        <label class="form-check-label" for="usemultilanguagename">Use multi-language section name</label>
+        <label class="form-check-label" for="usemultilanguagename">Use multi-language name</label>
         <small id="usemultilanguagenamehelp" class="text-muted d-block mb-2">{{#str}} usemultilanguagenamehelp, local_multilanguagenames {{/str}}</small>
 
         <div id="namemultilang_group" class="{{^multilanguageName}} hidden{{/multilanguageName}}">
-        <div class="d-flex">
-            <div class="w-100">
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name1">Primary name</label>
-                        <input type="text" class="form-control" id="name1" value="{{name1}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name1lang" class="form-control">
-                            <option value="en"{{#name1langen}} selected{{/name1langen}}>English - EN</option>
-                            <option value="mi"{{#name1langmi}} selected{{/name1langmi}}>Maori - MI</option>
-                        </select>
+            <div class="d-flex">
+                <div class="w-100">
+                    <div class="form-group fitem ">
+                        <div class="form-inline felement form-group">
+                            <label class="input-group-text justify-content-end" for="name1">Primary name</label>
+                            <input type="text" class="form-control" id="name1" value="{{name1}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
+                            <select id="name1lang" class="form-control">
+                                <option value="en"{{#name1langen}} selected{{/name1langen}}>English - EN</option>
+                                <option value="mi"{{#name1langmi}} selected{{/name1langmi}}>Maori - MI</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name2">Secondary name</label>
-                        <input type="text" class="form-control" id="name2" value="{{name2}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name2lang" class="form-control">
-                            <option value="en"{{#name2langen}} selected{{/name2langen}}>English - EN</option>
-                            <option value="mi"{{#name2langmi}} selected{{/name2langmi}}>Maori - MI</option>
-                        </select>
+                    <div class="form-group fitem ">
+                        <div class="form-inline felement form-group">
+                            <label class="input-group-text justify-content-end" for="name2">Secondary name</label>
+                            <input type="text" class="form-control" id="name2" value="{{name2}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
+                            <select id="name2lang" class="form-control">
+                                <option value="en"{{#name2langen}} selected{{/name2langen}}>English - EN</option>
+                                <option value="mi"{{#name2langmi}} selected{{/name2langmi}}>Maori - MI</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name3">Tertiary name</label>
-                        <input type="text" class="form-control" id="name3" value="{{name3}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name3lang" class="form-control">
-                            <option value="en"{{#name3langen}} selected{{/name3langen}}>English - EN</option>
-                            <option value="mi"{{#name3langmi}} selected{{/name3langmi}}>Maori - MI</option>
-                        </select>
+                    <div class="form-group fitem ">
+                        <div class="form-inline felement form-group">
+                            <label class="input-group-text justify-content-end" for="name3">Tertiary name</label>
+                            <input type="text" class="form-control" id="name3" value="{{name3}}" size="25" maxlength="255" required="" pattern=".*\S+.*">
+                            <select id="name3lang" class="form-control">
+                                <option value="en"{{#name3langen}} selected{{/name3langen}}>English - EN</option>
+                                <option value="mi"{{#name3langmi}} selected{{/name3langmi}}>Maori - MI</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="namemultilang_preview_group">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">Preview</h6>
-                        <div id="namemultilang_preview">
-                        <span class="mlnc"><span class="mln1" lang="mi">He whakamārama</span><span class="divider"> | </span><span class="mln2" lang="en">All about the course</span><span class="divider"> | </span><span class="mln3" lang="fr">Tout sur le cours</span></span>
+                <div id="namemultilang_preview_group">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">Preview</h6>
+                            <div id="namemultilang_preview">
+                            <span class="mlnc"><span class="mln1" lang="mi">He whakamārama</span><span class="divider"> | </span><span class="mln2" lang="en">All about the course</span><span class="divider"> | </span><span class="mln3" lang="fr">Tout sur le cours</span></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-    </div>
-
-    <div id="namemultilang_group" class="{{^multilanguageName}} hidden{{/multilanguageName}}">
-        <div class="d-flex">
-            <div>
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name1">Primary name</label>
-                        <input type="text" class="form-control" id="name1" value="{{name1}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name1lang" class="form-control">
-                            <option value="en"{{#name1langen}} selected{{/name1langen}}>English - EN</option>
-                            <option value="mi"{{#name1langmi}} selected{{/name1langmi}}>Maori - MI</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name2">Secondary name</label>
-                        <input type="text" class="form-control" id="name2" value="{{name2}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name2lang" class="form-control">
-                            <option value="en"{{#name2langen}} selected{{/name2langen}}>English - EN</option>
-                            <option value="mi"{{#name2langmi}} selected{{/name2langmi}}>Maori - MI</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group fitem ">
-                    <div class="form-inline felement form-group">
-                        <label class="input-group-text justify-content-end" for="name3">Tertiary name</label>
-                        <input type="text" class="form-control" id="name3" value="{{name3}}" size="30" maxlength="255" required="" pattern=".*\S+.*">
-                        <select id="name3lang" class="form-control">
-                            <option value="en"{{#name3langen}} selected{{/name3langen}}>English - EN</option>
-                            <option value="mi"{{#name3langmi}} selected{{/name3langmi}}>Maori - MI</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div id="namemultilang_preview_group">
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-subtitle mb-2 text-muted">Preview</h6>
-                        <div id="namemultilang_preview"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    
-
-
 </div>
