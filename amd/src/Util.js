@@ -30,10 +30,17 @@
 /* eslint-disable max-len */
 class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
+    static #CONTAINER_START_FRAGMENT = '<span class="mlnc">';
+
     static #NAME_REGEX_FRAGMENT = '<span class="mln[1-3]" lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
-    static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
+    static #NAME_FRAGMENT = '<span class="mln{level}" lang="{lang}" xml:lang="{lang}">{name}</span>';
+
     static #DIVIDER_PLAINTEXT_FRAGMENT = ' | ';
+    static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
+    static #DIVIDER_FRAGMENT = `<span class="divider">${Util.#DIVIDER_PLAINTEXT_FRAGMENT}</span>`;
+
     static #CONTAINER_END_REGEX_FRAGMENT = '<\\/span>';
+    static #CONTAINER_END_FRAGMENT = '</span>';
 
     static #NAME_REGEX = new RegExp(`${Util.#CONTAINER_START_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT}(?:${Util.#DIVIDER_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT}(?:${Util.#DIVIDER_REGEX_FRAGMENT}${Util.#NAME_REGEX_FRAGMENT})?)?${Util.#CONTAINER_END_REGEX_FRAGMENT}`, 'g');
 
@@ -118,7 +125,24 @@ class Util {
      * @returns @string
      */
     generateHTML() {
-        return `<b>${this.nameCount}</b>`;
+        let html = Util.#CONTAINER_START_FRAGMENT;
+        if (this.nameCount >= 1) {
+            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 1).replace(/{lang}/g, this.name1lang).replace(/{name}/g, this.name1);
+        }
+
+        if (this.nameCount >= 2) {
+            html += Util.#DIVIDER_FRAGMENT;
+            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 2).replace(/{lang}/g, this.name2lang).replace(/{name}/g, this.name2);
+        }
+
+        if (this.nameCount === 3) {
+            html += Util.#DIVIDER_FRAGMENT;
+            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 3).replace(/{lang}/g, this.name3lang).replace(/{name}/g, this.name3);
+        }
+
+        html += Util.#CONTAINER_END_FRAGMENT;
+
+        return html;
     }
 
     /**

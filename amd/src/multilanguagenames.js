@@ -42,9 +42,11 @@ export const init = () => {
         let context = {
             name: idName,
             multilanguageName: util.multilanguageName,
+            multilanguagenamePlaintext: util.generatePlaintext(),
             name1: util.name1,
             name2: util.name2,
             name3: util.name3,
+            preview: util.generateHTML(),
         };
 
         context[`name1lang${util.name1lang}`] = true;
@@ -71,7 +73,7 @@ export const init = () => {
             });
 
             $('#namemultilang_group input[type="text"]').on('input', function() {
-                window.console.log('name changed');
+                window.console.log('name changed v3');
                 const name1 = $('#name1').val();
                 const name2 = $('#name2').val();
                 const name3 = $('#name3').val();

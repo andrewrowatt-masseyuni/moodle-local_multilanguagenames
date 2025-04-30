@@ -1,4 +1,8 @@
 #page-course-editsection {
+    #id_name_shadow {
+        width: 100%;
+    }
+
     #namemultilang_group_container {
         /* to emulate fitem class */
         padding: .5rem;
@@ -21,11 +25,7 @@ span.mlnc {
     --font-mi: "Georgia", serif;
     --font-sans: Source Sans Pro, Roboto, Arial, sans-serif;
 
-    span.divider {
-        display: none;
-    }
-
-    span:nth-child(5) {
+    span.mln3 {
         font-style: italic;
         font-family: var(--font-sans);
     }
@@ -37,19 +37,24 @@ span.mlnc {
     /* Moodle converts to lower case (per the spect, H technically should be upper case) */
     span:lang(zh),
     span:lang(zh-hans) {
-        font-style:normal;
+        font-style: normal;
     }
 }
 
 /* Snap table of contents */
+#chapters h3 a,
 #namemultilang_preview {
     span.mlnc {
-        display: grid!important;
+        display: grid;
         grid-template-rows: min-content min-content min-content;
-        
+
         margin: 0.3em 0;
 
-        span:first-child {
+        span.divider {
+            display: none;
+        }
+
+        span.mln1 {
             grid-row: 2;
             line-height: 1.2;
             margin-top: 0.3em;
@@ -57,22 +62,21 @@ span.mlnc {
 
         /* span.divider */
 
-        span:nth-child(3) {
+        span.mln2 {
             grid-row: 3;
             font-size: 75%;
-            
-            line-height:1.1;
+            line-height: 1.1;
             margin-top: 0.3em;
             margin-bottom: 0.3em;
         }
 
         /* span.divider */
 
-        span:nth-child(5) {
-            grid-row:1;
+        span.mln3 {
+            grid-row: 1;
             font-size: 75%;
 
-            line-height:1.2;
+            line-height: 1.2;
             padding-top: 0.3em;
             margin-bottom: -0.3em; /* offset top margin of first (which is needed in case of no content for third) */
         }
@@ -81,34 +85,38 @@ span.mlnc {
 
 h2.sectionname {
     span.mlnc {
-        display: grid!important;
+        display: grid;
         grid-template-rows: min-content min-content min-content;
-        
-        span:nth-child(1) {
+
+        span.divider {
+            display: none;
+        }
+
+        span.mln1 {
             grid-row: 2;
             line-height: 1.2;
         }
 
         /* span.divider */
 
-        span:nth-child(3) {
+        span.mln2 {
             grid-row: 3;
             font-size: 75%;
-            
-            line-height:1.2;
+
+            line-height: 1.2;
             margin-top: 0.3em;
             margin-bottom: 0.3em;
         }
 
         /* span.divider */
 
-        span:nth-child(5) {
+        span.mln3 {
             grid-row: 1;
             font-size: 75%;
 
-            line-height:1.2;
+            line-height: 1.2;
             padding-top: 0.3em;
-       }
+        }
     }
 }
 
@@ -119,29 +127,33 @@ nav.section_footer {
             grid-template-rows: min-content min-content min-content;
             margin-bottom: 0.5em;
 
-            span:nth-child(1) {
+            span.divider {
+                display: none;
+            }
+
+            span.mln1 {
                 grid-row: 2;
                 line-height: 1.2;
             }
 
             /* span.divider */
 
-            span:nth-child(3) {
+            span.mln2 {
                 grid-row: 3;
                 font-size: 75%;
-                
-                line-height:1.2;
+
+                line-height: 1.2;
                 margin-top: 0.3em;
                 margin-bottom: 0.3em;
             }
 
             /* span.divider */
 
-            span:nth-child(5) {
+            span.mln3 {
                 grid-row: 1;
                 font-size: 75%;
         
-                line-height:1.2;
+                line-height: 1.2;
                 padding-top: 0.3em;
             }
         }
@@ -152,21 +164,21 @@ li.snap-activity {
     a.mod-link:has(span.mlnc) {
         display: flex;
         margin-bottom: 1em;
-        
+
         span.mlnc {
             display: inline-grid;
             grid-template-rows: min-content min-content min-content;
             align-content: center;
 
             margin-bottom: 0;
-            
-            span:nth-child(1) {
+
+            span.mln1 {
                 grid-row: 2;
             }
 
             /* span.divider */
 
-            span:nth-child(3) {
+            span.mln2 {
                 grid-row: 3;
                 font-size: 80%;
                 
@@ -177,7 +189,7 @@ li.snap-activity {
 
             /* span.divider */
 
-            span:nth-child(5) {
+            span.mln3 {
                 grid-row: 1;
                 font-size: 75%;
                 
