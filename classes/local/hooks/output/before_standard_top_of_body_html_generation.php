@@ -53,7 +53,6 @@ class before_standard_top_of_body_html_generation {
         // $hook->add_html('<div class="test1">This is a test"' . $PAGE->pagetype . '</div>');.
 
         if ($PAGE->pagetype == 'course-editsection' || $PAGE->pagetype == 'mod-forum-mod') {
-            $PAGE->requires->js_call_amd('local_multilanguagenames/simpletest', 'init');
             $PAGE->requires->js_call_amd('local_multilanguagenames/multilanguagenames', 'init');
         }
 
