@@ -33,7 +33,7 @@ class Util {
     static #CONTAINER_START_FRAGMENT = '<span class="mlnc">';
 
     static #NAME_REGEX_FRAGMENT = '<span class="mln[1-3]" lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
-    static #NAME_FRAGMENT = '<span class="mln{level}" lang="{lang}" xml:lang="{lang}">{name}</span>';
+    static #NAME_FRAGMENT = '<span class="mln{level}" lang="{lang}">{name}</span>';
 
     static #DIVIDER_PLAINTEXT_FRAGMENT = ' | ';
     static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
