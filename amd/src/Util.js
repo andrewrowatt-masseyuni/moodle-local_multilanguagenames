@@ -32,12 +32,13 @@ class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
     static #CONTAINER_START_FRAGMENT = '<span class="mlnc">';
 
-    static #NAME_REGEX_FRAGMENT = '<span class="mln[1-3]" lang="(..)"(?: xml:lang="..")?>(.*?)<\\/span>';
-    static #NAME_FRAGMENT = '<span class="mln{level}" lang="{lang}">{name}</span>';
+    static #NAME_REGEX_FRAGMENT = '<span class="n[1-3]"(?: lang="(..)" xml:lang="..")?>(.*?)<\\/span>';
+    static #NAME_FRAGMENT = '<span class="n{level}" lang="{lang}" xml:lang="{lang}">{name}</span>';
+    static #NAME_FRAGMENT_EN = '<span class="n{level}">{name}</span>';
 
     static #DIVIDER_PLAINTEXT_FRAGMENT = ' | ';
-    static #DIVIDER_REGEX_FRAGMENT = '<span class="divider"> \\| <\\/span>';
-    static #DIVIDER_FRAGMENT = `<span class="divider">${Util.#DIVIDER_PLAINTEXT_FRAGMENT}</span>`;
+    static #DIVIDER_REGEX_FRAGMENT = '<span> \\| <\\/span>';
+    static #DIVIDER_FRAGMENT = `<span>${Util.#DIVIDER_PLAINTEXT_FRAGMENT}</span>`;
 
     static #CONTAINER_END_REGEX_FRAGMENT = '<\\/span>';
     static #CONTAINER_END_FRAGMENT = '</span>';
@@ -83,22 +84,24 @@ class Util {
         // To-do: Remove [] from right hand side
         let [match] = [...this.sectionOrActivityName.matchAll(Util.#NAME_REGEX, 'g')];
 
+        window.console.log(match);
+
         if (match) {
-            if (match[1] !== undefined && match[2] !== undefined) {
+            if (match[2] !== undefined) {
                 this.multilanguageName = true;
                 this.nameCount = 1;
                 this.name1 = match[2];
-                this.name1lang = match[1];
+                this.name1lang = match[1] || 'en';
 
-                if (match[3] !== undefined && match[4] !== undefined) {
+                if (match[4] !== undefined) {
                     this.nameCount = 2;
                     this.name2 = match[4];
-                    this.name2lang = match[3];
+                    this.name2lang = match[3] || 'en';
 
-                    if (match[5] !== undefined && match[6] !== undefined) {
+                    if (match[6] !== undefined) {
                         this.nameCount = 3;
                         this.name3 = match[6];
-                        this.name3lang = match[5];
+                        this.name3lang = match[5] || 'en';
                     }
                 }
             }
@@ -126,18 +129,22 @@ class Util {
      */
     generateHTML() {
         let html = Util.#CONTAINER_START_FRAGMENT;
+        let namefragement = '';
         if (this.nameCount >= 1) {
-            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 1).replace(/{lang}/g, this.name1lang).replace(/{name}/g, this.name1);
+            namefragement = this.name1lang === 'en' ? Util.#NAME_FRAGMENT_EN : Util.#NAME_FRAGMENT;
+            html += namefragement.replace(/{level}/g, 1).replace(/{lang}/g, this.name1lang).replace(/{name}/g, this.name1);
         }
 
         if (this.nameCount >= 2) {
             html += Util.#DIVIDER_FRAGMENT;
-            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 2).replace(/{lang}/g, this.name2lang).replace(/{name}/g, this.name2);
+            namefragement = this.name2lang === 'en' ? Util.#NAME_FRAGMENT_EN : Util.#NAME_FRAGMENT;
+            html += namefragement.replace(/{level}/g, 2).replace(/{lang}/g, this.name2lang).replace(/{name}/g, this.name2);
         }
 
         if (this.nameCount === 3) {
             html += Util.#DIVIDER_FRAGMENT;
-            html += Util.#NAME_FRAGMENT.replace(/{level}/g, 3).replace(/{lang}/g, this.name3lang).replace(/{name}/g, this.name3);
+            namefragement = this.name3lang === 'en' ? Util.#NAME_FRAGMENT_EN : Util.#NAME_FRAGMENT;
+            html += namefragement.replace(/{level}/g, 3).replace(/{lang}/g, this.name3lang).replace(/{name}/g, this.name3);
         }
 
         html += Util.#CONTAINER_END_FRAGMENT;
