@@ -22,8 +22,10 @@
  */
 
 import $ from 'jquery';
+import Templates from 'core/templates';
 
 export const init = () => {
         window.console.log($('body').length);
         window.console.log("simpletest module initialized");
+        Templates.renderForPromise('local_multilanguagenames/edit_form', {});
 };
