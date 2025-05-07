@@ -106,9 +106,9 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: npx grunt --version
 
-      - name: babel version AJR
+      - name: NPM list AJR
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npm list @babel/core
+        run: npm list
         
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
