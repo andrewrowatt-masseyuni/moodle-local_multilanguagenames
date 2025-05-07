@@ -172,7 +172,4 @@ class Util {
     }
 }
 
-const util = new Util();
-window.console.log(util.generateHTML());
-
-// Eexport default Util;
+export default Util;

@@ -21,6 +21,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+import $ from 'jquery';
+
 export const init = () => {
+        window.console.log($('body').length);
         window.console.log("simpletest module initialized");
 };
