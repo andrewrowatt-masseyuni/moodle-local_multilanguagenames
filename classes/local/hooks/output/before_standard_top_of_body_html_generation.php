@@ -54,6 +54,7 @@ class before_standard_top_of_body_html_generation {
 
         if ($PAGE->pagetype == 'course-editsection' || $PAGE->pagetype == 'mod-forum-mod') {
             $PAGE->requires->js_call_amd('local_multilanguagenames/multilanguagenames', 'init');
+            $PAGE->requires->js_call_amd('local_multilanguagenames/simpletest', 'init');
         }
 
         return;
