@@ -171,5 +171,4 @@ class Util {
     }
 }
 
-// AJR Test
 export default Util;
