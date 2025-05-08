@@ -108,7 +108,7 @@ jobs:
 
       - name: NPM list AJR
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/ci
+        run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle
         
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
