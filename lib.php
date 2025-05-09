@@ -22,3 +22,29 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+ /**
+  * Summary of local_multilanguagenames_before_standard_top_of_body_html
+  * @return string 
+  */
+ function local_multilanguagenames_before_standard_top_of_body_html(): string {
+    global $CFG;
+    global $PAGE;
+    if (during_initial_install() || isset($CFG->upgraderunning) || !get_config('local_multilanguagenames', 'version')) {
+        // Do nothing during installation or upgrade.
+        return '';
+    }
+    /* If the core setting enabled then exit */
+    if (!empty($CFG->formatstringstriptags)) {
+        return '';
+    }
+
+    // For discovery purposes only.
+    // $hook->add_html('<div class="test1">This is a test"' . $PAGE->pagetype . '</div>');.
+
+    if ($PAGE->pagetype == 'course-editsection' || $PAGE->pagetype == 'mod-forum-mod') {
+        $PAGE->requires->js_call_amd('local_multilanguagenames/multilanguagenames', 'init');
+        x();
+    }
+
+    return '';
+ }

@@ -28,5 +28,5 @@ $plugin->component    = 'local_multilanguagenames';
 $plugin->release      = '1.2';
 $plugin->version      = 2025041702;
 $plugin->requires     = 2024100700;
-$plugin->supported    = [405, 405];
+$plugin->supported    = [401, 405];
 $plugin->maturity     = MATURITY_STABLE;
