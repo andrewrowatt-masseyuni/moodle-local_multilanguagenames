@@ -110,5 +110,14 @@ Feature: Convert an existing section to use multilanguage names
         And the "value" attribute of "name1" "field" should contain "Unnamed section"
         And I should see "" in the "name2" "field"
         And I should see "" in the "name3" "field"
+        # Use name1 and name3 only
+        Given I set the field "name1" to "section4part1"
+        Given I set the field "name3" to "section4part3"
+        And the "value" attribute of "id_name_shadow" "field" should contain "section4part1 | section4part3"
         And I press "Save changes"
+        Given I am on "Course 1" course homepage
+        Then I should see "section4part1 | section4part3"
+
+
+
 
