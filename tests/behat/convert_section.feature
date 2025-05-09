@@ -47,6 +47,11 @@ Feature: Convert an existing section to use multilanguage names
         And I should not see "Primary name"
         Given I click on "Use multi-language name" "checkbox"
         Then I should see "Primary name"
+
+        And the field "Primary name" matches value "section0part1"
+        And the field "Secondary (below)" matches value ""
+        And the field "Secondary (above)" matches value ""
+
         And the "value" attribute of "name1" "field" should contain "section0part1"
         And I should see "" in the "name2" "field"
         And I should see "" in the "name3" "field"

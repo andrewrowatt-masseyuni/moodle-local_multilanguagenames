@@ -42,11 +42,11 @@
 
         <div id="namemultilang_group" class="{{^multilanguageName}} hidden{{/multilanguageName}}">
             <div class="d-flex">
-                <div class="w-100">
+                <div class="w-100" style="max-width: 40em;">
                     <div class="form-group fitem ">
                         <div class="form-inline felement form-group">
-                            <label class="input-group-text justify-content-end" for="name1">{{#str}} primaryname, local_multilanguagenames {{/str}}</label>
-                            <input type="text" class="form-control" id="name1" value="{{name1}}" size="20" maxlength="255" required="" pattern=".*\S+.*">
+                            <label class="justify-content-start" for="name1">{{#str}} primaryname, local_multilanguagenames {{/str}}</label>
+                            <input type="text" class="form-control ml-1 mr-1" id="name1" value="{{name1}}" size="20" maxlength="255" required="" pattern=".*\S+.*">
                             <select id="name1lang" class="form-control">
 <option value="en"{{#name1langen}} selected{{/name1langen}}>English</option>
 <option value="mi"{{#name1langmi}} selected{{/name1langmi}}>Māori</option>
@@ -60,8 +60,8 @@
 
                     <div class="form-group fitem ">
                         <div class="form-inline felement form-group">
-                            <label class="input-group-text justify-content-end" for="name2">{{#str}} secondarybelow, local_multilanguagenames {{/str}}</label>
-                            <input type="text" class="form-control" id="name2" value="{{name2}}" size="20" maxlength="255" pattern=".*\S+.*">
+                            <label class="justify-content-start" for="name2">{{#str}} secondarybelow, local_multilanguagenames {{/str}}</label>
+                            <input type="text" class="form-control ml-1 mr-1" id="name2" value="{{name2}}" size="20" maxlength="255" pattern=".*\S+.*">
                             <select id="name2lang" class="form-control">
 <option value="en"{{#name2langen}} selected{{/name2langen}}>English</option>
 <option value="mi"{{#name2langmi}} selected{{/name2langmi}}>Māori</option>
@@ -75,8 +75,8 @@
 
                     <div class="form-group fitem ">
                         <div class="form-inline felement form-group">
-                            <label class="input-group-text justify-content-end" for="name3">{{#str}} secondaryabove, local_multilanguagenames {{/str}}</label>
-                            <input type="text" class="form-control" id="name3" value="{{name3}}" size="20" maxlength="255" pattern=".*\S+.*">
+                            <label class="justify-content-start" for="name3">{{#str}} secondaryabove, local_multilanguagenames {{/str}}</label>
+                            <input type="text" class="form-control ml-1 mr-1" id="name3" value="{{name3}}" size="20" maxlength="255" pattern=".*\S+.*">
                             <select id="name3lang" class="form-control">
 <option value="en"{{#name3langen}} selected{{/name3langen}}>English</option>
 <option value="mi"{{#name3langmi}} selected{{/name3langmi}}>Māori</option>
