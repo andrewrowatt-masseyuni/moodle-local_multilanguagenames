@@ -31,7 +31,7 @@ class Util {
     static #CONTAINER_START_REGEX_FRAGMENT = '<span class="mlnc">';
     static #CONTAINER_START_FRAGMENT = '<span class="mlnc">';
 
-    static #NAME_REGEX_FRAGMENT = '<span class="n[1-3]"(?: lang="(..)" xml:lang="..")?>(.*?)<\\/span>';
+    static #NAME_REGEX_FRAGMENT = '<span class="n(\\d)"(?: lang="(..)" xml:lang="..")?>(.*?)<\\/span>';
     static #NAME_FRAGMENT = '<span class="n{level}" lang="{lang}" xml:lang="{lang}">{name}</span>';
     static #NAME_FRAGMENT_EN = '<span class="n{level}">{name}</span>';
 
@@ -83,24 +83,40 @@ class Util {
         let [match] = [...this.sectionOrActivityName.matchAll(Util.#NAME_REGEX, 'g')];
 
         if (match) {
-            if (match[2] !== undefined) {
+            if (match[3] !== undefined) {
                 this.multilanguageName = true;
                 this.nameCount = 1;
-                this.name1 = match[2];
-                this.name1lang = match[1] || 'en';
+                this.name1 = match[3];
+                this.name1lang = match[2] || 'en';
+            }
 
-                if (match[4] !== undefined) {
+            if (match[6] !== undefined) {
+                if (match[4] == "3") {
+                    this.nameCount = 3;
+                    this.name3 = match[6];
+                    this.name3lang = match[5] || 'en';
+                } else {
                     this.nameCount = 2;
-                    this.name2 = match[4];
-                    this.name2lang = match[3] || 'en';
+                    this.name2 = match[6];
+                    this.name2lang = match[5] || 'en';
 
-                    if (match[6] !== undefined) {
+                    if (match[9] !== undefined) {
                         this.nameCount = 3;
-                        this.name3 = match[6];
-                        this.name3lang = match[5] || 'en';
+                        this.name3 = match[9];
+                        this.name3lang = match[8] || 'en';
                     }
                 }
             }
+        }
+    }
+
+    #updateNameCount() {
+        if (this.name3) {
+            this.nameCount = 3;
+        } else if (this.name2) {
+            this.nameCount = 2;
+        } else {
+            this.nameCount = 1;
         }
     }
 
@@ -131,6 +147,8 @@ class Util {
      * @returns @string
      */
     generateHTML() {
+        this.#updateNameCount();
+
         let html = Util.#CONTAINER_START_FRAGMENT;
         let namefragement = '';
         if (this.nameCount >= 1) {
@@ -138,7 +156,7 @@ class Util {
             html += namefragement.replace(/{level}/g, 1).replace(/{lang}/g, this.name1lang).replace(/{name}/g, this.name1);
         }
 
-        if (this.nameCount >= 2) {
+        if (this.nameCount >= 2 && this.name2) {
             html += Util.#DIVIDER_FRAGMENT;
             namefragement = this.name2lang === 'en' ? Util.#NAME_FRAGMENT_EN : Util.#NAME_FRAGMENT;
             html += namefragement.replace(/{level}/g, 2).replace(/{lang}/g, this.name2lang).replace(/{name}/g, this.name2);
@@ -161,14 +179,19 @@ class Util {
      * @returns @string
      */
     generatePlaintext() {
+        this.#updateNameCount();
+
         let plaintext = '';
 
-        if (this.nameCount === 1) {
+        if (this.nameCount >= 1) {
             plaintext = this.name1;
-        } else if (this.nameCount === 2) {
-            plaintext = `${this.name1}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name2}`;
-        } else if (this.nameCount === 3) {
-            plaintext = `${this.name1}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name2}${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name3}`;
+        }
+
+        if (this.nameCount >= 2 && this.name2) {
+            plaintext += `${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name2}`;
+        }
+        if (this.nameCount === 3) {
+            plaintext += `${Util.#DIVIDER_PLAINTEXT_FRAGMENT}${this.name3}`;
         }
 
         return plaintext;

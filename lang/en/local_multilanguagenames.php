@@ -26,4 +26,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Multi-language section and activity names';
+$string['primaryname'] = 'Primary name';
+$string['secondaryabove'] = 'Secondary (above)';
+$string['secondarybelow'] = 'Secondary (below)';
 $string['usemultilanguagenamehelp'] = 'Enables bilingual and trilingual names for sections and selected activities.';
