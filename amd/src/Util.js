@@ -80,10 +80,7 @@ class Util {
     }
 
     #parseName() {
-        // To-do: Remove [] from right hand side
         let [match] = [...this.sectionOrActivityName.matchAll(Util.#NAME_REGEX, 'g')];
-
-        window.console.log(match);
 
         if (match) {
             if (match[2] !== undefined) {
@@ -113,12 +110,19 @@ class Util {
     }
 
     convertToMultilanguageName() {
-        /* Parse the sectionOrActivityName from a standard format e.g., from Paepae kōrero | Keeping in touch */
-        let [name1, name2, name3] = this.sectionOrActivityName.trim().split(' | ');
+        if (!this.multilanguageName) {
+            let [name1, name2, name3] = this.sectionOrActivityName.trim().split('|');
 
-            window.console.log(name1);
-            window.console.log(name2);
-            window.console.log(name3);
+            this.name3 = (name3 || '').trim();
+            this.name2 = (name2 || '').trim() || this.name3;
+            this.name1 = (name1 || '').trim() || this.name2 || 'Unnamed section';
+
+            this.nameCount = 1 + (this.name2 ? 1 : 0) + (this.name3 ? 1 : 0);
+
+            this.multilanguageName = true;
+        }
+        /* Parse the sectionOrActivityName from a standard format e.g., from Paepae kōrero | Keeping in touch */
+
     }
 
     /**

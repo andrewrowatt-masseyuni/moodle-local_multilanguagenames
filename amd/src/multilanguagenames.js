@@ -59,11 +59,26 @@ export const init = () => {
         .then(({html}) => {
             $(html).insertAfter('#fitem_id_name');
 
+            // Setup event handlers for the multi-language name field changes
             $('#usemultilanguagename').on('change', function() {
                 if ($(this).is(':checked')) {
                     $('#fitem_id_name').addClass('hidden');
                     $('#fitem_id_name_shadow').removeClass('hidden');
                     $('#namemultilang_group').removeClass('hidden');
+
+                    if (!util.multilanguageName) {
+                        // Parse the name into the three name fields
+                        util.convertToMultilanguageName();
+                    }
+
+                    $('#name1').val(util.name1);
+                    $('#name2').val(util.name2);
+                    $('#name3').val(util.name3);
+
+                    $('#id_name_shadow').val(util.generatePlaintext());
+                    html = util.generateHTML();
+                    $('#id_name').val(util.generateHTML());
+                    $('#namemultilang_preview').html(html);
                 } else {
                     $('#id_name').val($('#id_name_shadow').val());
                     $('#fitem_id_name').removeClass('hidden');
@@ -73,14 +88,30 @@ export const init = () => {
             });
 
             $('#namemultilang_group input[type="text"]').on('input', function() {
-                window.console.log('name changed v3');
                 const name1 = $('#name1').val();
                 const name2 = $('#name2').val();
                 const name3 = $('#name3').val();
 
-                var util = new Util(name1, $('#name1lang').val(), name2, $('#name2lang').val(), name3, $('#name3lang').val());
+                util.name1 = name1;
+                util.name2 = name2;
+                util.name3 = name3;
 
                 $('#id_name_shadow').val(util.generatePlaintext());
+                html = util.generateHTML();
+                $('#id_name').val(util.generateHTML());
+                $('#namemultilang_preview').html(html);
+            });
+
+            $('#namemultilang_group select').on('change', function() {
+                const name1lang = $('#name1lang').val();
+                const name2lang = $('#name2lang').val();
+                const name3lang = $('#name3lang').val();
+
+                util.name1lang = name1lang;
+                util.name2lang = name2lang;
+                util.name3lang = name3lang;
+
+                // Do not need to update the plaintext version of the name, just the HTML version
                 html = util.generateHTML();
                 $('#id_name').val(util.generateHTML());
                 $('#namemultilang_preview').html(html);

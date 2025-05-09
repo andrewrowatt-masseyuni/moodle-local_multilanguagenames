@@ -82,6 +82,7 @@ span.mlnc {
 
 /* Snap section heading */
 h2.sectionname,
+h3.sectionname,
 #page-mod-forum-view h1.h2 {
     span.mlnc {
         display: grid;
