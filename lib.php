@@ -24,9 +24,9 @@
 
  /**
   * Summary of local_multilanguagenames_before_standard_top_of_body_html
-  * @return string 
+  * @return string
   */
- function local_multilanguagenames_before_standard_top_of_body_html(): string {
+function local_multilanguagenames_before_standard_top_of_body_html(): string {
     global $CFG;
     global $PAGE;
     if (during_initial_install() || isset($CFG->upgraderunning) || !get_config('local_multilanguagenames', 'version')) {
@@ -46,4 +46,4 @@
     }
 
     return '';
- }
+}
