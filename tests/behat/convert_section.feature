@@ -17,17 +17,25 @@ Feature: Convert an existing section to use multilanguage names
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I turn editing mode on
-    Then I edit the section "0" and I fill the form with:
-        | Section name | section0part1 |
+    Then I edit the section "0"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section0part1"
+    And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    Then I edit the section "1" and I fill the form with:
-        | Section name | section1part1 \| section1part2 |
+    Then I edit the section "1"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section1part1 | section1part2"
+    And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    Then I edit the section "2" and I fill the form with:
-        | Section name | section2part1 \| section2part2 \| section2part3 |
+    Then I edit the section "2"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section2part1 | section2part2 | section2part3"
+    And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    Then I edit the section "3" and I fill the form with:
-        | Section name | section3part1 \| section3part2 \| section3part3 \| section3part4 |
+    Then I edit the section "3"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section3part1 | section3part2 | section3part3 | section3part4"
+    And I click on "Save changes" "button"
 
   Scenario: Edit sections with plaintext
     When I log in as "teacher1"
@@ -111,13 +119,15 @@ Feature: Convert an existing section to use multilanguage names
     And I edit the section "4"
     Given I click on "Use multi-language name" "checkbox"
     Then I should see "Primary name"
-    And the "value" attribute of "name1" "field" should contain "Unnamed section"
     And I should see "" in the "name2" "field"
     And I should see "" in the "name3" "field"
     # Use name1 and name3 only
     Given I set the field "name1" to "section4part1"
     Given I set the field "name3" to "section4part3"
     And the "value" attribute of "id_name_shadow" "field" should contain "section4part1 | section4part3"
+    And the "value" attribute of "id_name_value" "field" should contain "section4part1"
     And I press "Save changes"
     Given I am on "Course 1" course homepage
-    Then I should see "section4part1 | section4part3"
+    And I turn editing mode off
+    Then I should see "section4part1"
+    And I should see "section4part3"

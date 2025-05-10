@@ -32,7 +32,7 @@ export const init = () => {
     $(function() {
         console.log("Multi-language section and activity names (local_multilanguagenames) module initialized");
         // Add your module initialization code here
-        const idName = $('#id_name').val();
+        const idName = $('#id_name_value').val();
 
         var util = new Util(idName);
         if (util.multilanguageName) {
@@ -77,10 +77,10 @@ export const init = () => {
 
                     $('#id_name_shadow').val(util.generatePlaintext());
                     html = util.generateHTML();
-                    $('#id_name').val(util.generateHTML());
+                    $('#id_name_value').val(util.generateHTML());
                     $('#namemultilang_preview').html(html);
                 } else {
-                    $('#id_name').val($('#id_name_shadow').val());
+                    $('#id_name_value').val($('#id_name_shadow').val());
                     $('#fitem_id_name').removeClass('hidden');
                     $('#fitem_id_name_shadow').addClass('hidden');
                     $('#namemultilang_group').addClass('hidden');
@@ -98,7 +98,7 @@ export const init = () => {
 
                 $('#id_name_shadow').val(util.generatePlaintext());
                 html = util.generateHTML();
-                $('#id_name').val(util.generateHTML());
+                $('#id_name_value').val(util.generateHTML());
                 $('#namemultilang_preview').html(html);
             });
 
@@ -113,7 +113,7 @@ export const init = () => {
 
                 // Do not need to update the plaintext version of the name, just the HTML version
                 html = util.generateHTML();
-                $('#id_name').val(util.generateHTML());
+                $('#id_name_value').val(util.generateHTML());
                 $('#namemultilang_preview').html(html);
             });
         })
