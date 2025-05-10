@@ -43,7 +43,6 @@
 
     if ($PAGE->pagetype == 'course-editsection' || $PAGE->pagetype == 'mod-forum-mod') {
         $PAGE->requires->js_call_amd('local_multilanguagenames/multilanguagenames', 'init');
-        x();
     }
 
     return '';
