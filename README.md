@@ -5,7 +5,7 @@ Provides a structured approach to multi-language section and activity names
 
 Utilises a core Moodle feature to enable HTML section and activity names
 which is then used with HTML and CSS to provide a tailored visual presentation
-of section and activity names
+of section and activity names.
 
 ## Installing via uploaded ZIP file ##
 
