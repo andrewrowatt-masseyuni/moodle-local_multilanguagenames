@@ -118,15 +118,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-        
-      - name: PHPUnit tests - core_privacy_testsuite
-        if: ${{ !cancelled() }}
-        run: /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle/vendor/bin/phpunit --list-suitesblahblah
-
       - name: PHPUnit tests - core_privacy_testsuite - path
         if: ${{ !cancelled() }}
         run: |
-          ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites
+          ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites ${{ github.workspace }}/moodle
           echo "${{ github.workspace }}"
 
       - name: Behat features
