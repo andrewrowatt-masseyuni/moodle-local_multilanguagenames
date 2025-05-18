@@ -120,9 +120,7 @@ jobs:
 
       - name: PHPUnit tests - core_privacy_testsuite - path
         if: ${{ !cancelled() }}
-        run: |
-          ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites ${{ github.workspace }}/moodle
-          echo "${{ github.workspace }}"
+        run: ${{ github.workspace }}/moodle/vendor/bin/phpunit ${{ github.workspace }}/moodle/privacy/tests/privacy/provider_test.php
 
       - name: Behat features
         id: behat
