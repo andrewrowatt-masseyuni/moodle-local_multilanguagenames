@@ -118,9 +118,9 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      - name: PHPUnit tests - core_privacy_testsuite - 7
+      - name: PHPUnit tests - core_privacy_testsuite - 8
         if: ${{ !cancelled() }}
-        run: moodle/vendor/bin/phpunit --configuration moodle/phpunit.xml --verbose moodle/privacy/tests/privacy/provider_test.php
+        run: moodle/vendor/bin/phpunit --configuration ${{ github.workspace }}/moodle/phpunit.xml --verbose moodle/privacy/tests/privacy/provider_test.php
         #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
 
       # - name: Behat features
