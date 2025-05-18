@@ -120,11 +120,7 @@ jobs:
 
       - name: PHPUnit tests AJR dir
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci phpunit --fail-on-warning moodle/privacy/tests/privacy
-
-      - name: PHPUnit tests AJR - ls
-        if: ${{ !cancelled() }}
-        run: ls -al moodle/privacy/tests/privacy
+        run: moodle-plugin-ci phpunit --fail-on-warning --testsuite core_privacy_testsuite
 
       # - name: PHPUnit tests - core_privacy_testsuite - path1
       #   if: ${{ !cancelled() }}
