@@ -118,28 +118,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-
-      # - name: PHPUnit tests - core_privacy_testsuite - path1
-      #   if: ${{ !cancelled() }}
-      #   run: ${{ github.workspace }}/moodle/vendor/bin/phpunit privacy/tests/privacy/provider_test.php
-
-      # - name: PHPUnit tests - core_privacy_testsuite - path2
-      #   if: ${{ !cancelled() }}
-      #   run: |
-      #     ${{ github.workspace }}/moodle/vendor/bin/phpunit ../../privacy/tests/privacy/provider_test.php
-      #     echo $(pwd)
-
-      # - name: PHPUnit tests - core_privacy_testsuite - path3
-      #   if: ${{ !cancelled() }}
-      #   run: |
-      #     ${{ github.workspace }}/moodle/vendor/bin/phpunit ${{ github.workspace }}/moodle/privacy/tests/privacy/provider_test.php
-      #     echo $(pwd)
-
-      - name: PHPUnit tests - core_privacy_testsuite - path5
+      - name: PHPUnit tests - core_privacy_testsuite - 6
         if: ${{ !cancelled() }}
-        run: moodle/vendor/bin/phpunit --version
+        run: moodle/vendor/bin/phpunit --verbose moodle/privacy/tests/privacy/provider_test.php
         #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
-        
 
       # - name: Behat features
       #   id: behat
