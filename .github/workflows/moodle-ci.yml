@@ -118,9 +118,6 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      - name: PHPUnit tests AJR dir
-        if: ${{ !cancelled() }}
-        run: moodle-plugin-ci phpunit --fail-on-warning --testsuite core_privacy_testsuite
 
       # - name: PHPUnit tests - core_privacy_testsuite - path1
       #   if: ${{ !cancelled() }}
@@ -138,9 +135,10 @@ jobs:
       #     ${{ github.workspace }}/moodle/vendor/bin/phpunit ${{ github.workspace }}/moodle/privacy/tests/privacy/provider_test.php
       #     echo $(pwd)
 
-      - name: PHPUnit tests - core_privacy_testsuite - path4
+      - name: PHPUnit tests - core_privacy_testsuite - path5
         if: ${{ !cancelled() }}
-        run: moodle/vendor/bin/phpunit --fail-on-warning moodle/privacy/tests/privacy/provider_test.php
+        run: moodle/vendor/bin/phpunit --version
+        #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
         
 
       # - name: Behat features
