@@ -123,6 +123,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle/vendor/bin/phpunit --list-suites
 
+      - name: PHPUnit tests - core_privacy_testsuite - path
+        if: ${{ !cancelled() }}
+        run: ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites
+
       - name: Behat features
         id: behat
         if: ${{ !cancelled() }}
