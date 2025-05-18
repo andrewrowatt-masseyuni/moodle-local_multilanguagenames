@@ -114,18 +114,18 @@ jobs:
       #   if: ${{ !cancelled() && matrix.runchecks == 'all' }}
       #   run: moodle-plugin-ci -vvv grunt --max-lint-warnings 0
 
-      # - name: PHPUnit tests
-      #   if: ${{ !cancelled() }}
-      #   run: moodle-plugin-ci phpunit --fail-on-warning
+      - name: PHPUnit tests
+        if: ${{ !cancelled() }}
+        run: moodle-plugin-ci phpunit --fail-on-warning
 
       # - name: PHPUnit tests - core_privacy_testsuite - 8
       #   if: ${{ !cancelled() }}
       #   run: moodle/vendor/bin/phpunit --configuration ${{ github.workspace }}/moodle/phpunit.xml --verbose moodle/privacy/tests/privacy/provider_test.php
       #   #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
 
-      - name: AJR1
+      - name: AJR2
         if: ${{ !cancelled() }}
-        run: ls -al
+        run: ls -al moodle
 
       # - name: Behat features
       #   id: behat
