@@ -102,13 +102,13 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci mustache
 
-      - name: Grunt version AJR
-        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npx grunt --version
+      #- name: Grunt version AJR
+      #  if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+      #  run: npx grunt --version
 
-      - name: NPM list AJR
-        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle
+      #- name: NPM list AJR
+      #  if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+      #  run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle
         
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
@@ -121,11 +121,13 @@ jobs:
         
       - name: PHPUnit tests - core_privacy_testsuite
         if: ${{ !cancelled() }}
-        run: /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle/vendor/bin/phpunit --list-suites
+        run: /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle/vendor/bin/phpunit --list-suitesblahblah
 
       - name: PHPUnit tests - core_privacy_testsuite - path
         if: ${{ !cancelled() }}
-        run: ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites
+        run: |
+          ${{ github.workspace }}/moodle/vendor/bin/phpunit --list-suites
+          echo "${{ github.workspace }}"
 
       - name: Behat features
         id: behat
