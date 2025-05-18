@@ -122,6 +122,10 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning moodle/privacy/tests/privacy/provider_test.php
 
+      - name: PHPUnit tests AJR - ls
+        if: ${{ !cancelled() }}
+        run: ls -al moodle/privacy/tests/privacy
+
       # - name: PHPUnit tests - core_privacy_testsuite - path1
       #   if: ${{ !cancelled() }}
       #   run: ${{ github.workspace }}/moodle/vendor/bin/phpunit privacy/tests/privacy/provider_test.php
