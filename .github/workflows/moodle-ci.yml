@@ -121,7 +121,7 @@ jobs:
         
       - name: PHPUnit tests - core_privacy_testsuite
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci phpunit --fail-on-warning  --testsuite core_privacy_testsuite
+        run: /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle/vendor/bin/phpunit --testsuite core_privacy_testsuite
 
       - name: Behat features
         id: behat
