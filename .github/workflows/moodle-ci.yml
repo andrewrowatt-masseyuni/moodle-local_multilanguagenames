@@ -32,7 +32,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - php: '8.1'
+          - php: '7.4'
             # Main job. Run all checks that do not require setup and only need to be run once.
             runchecks: 'all'
             moodle-branch: 'MOODLE_401_STABLE'
@@ -98,49 +98,31 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci savepoints
 
-      # - name: Mustache Lint
-      #   if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-      #   run: moodle-plugin-ci mustache
+      - name: Mustache Lint
+        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+        run: moodle-plugin-ci mustache
 
-      #- name: Grunt version AJR
-      #  if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-      #  run: npx grunt --version
-
-      #- name: NPM list AJR
-      #  if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-      #  run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle
-        
-      # - name: Grunt
-      #   if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-      #   run: moodle-plugin-ci -vvv grunt --max-lint-warnings 0
+      - name: Grunt
+        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
+        run: moodle-plugin-ci -vvv grunt --max-lint-warnings 0
 
       - name: PHPUnit tests
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      - name: PHPUnit tests - core_privacy_testsuite - 8
+      - name: Behat features
+        id: behat
         if: ${{ !cancelled() }}
-        run: moodle/vendor/bin/phpunit --configuration moodle/phpunit.xml --verbose moodle/blog/tests/lib_test.php
-        #run: moodle/vendor/bin/phpunit --configuration ${{ github.workspace }}/moodle/phpunit.xml --verbose moodle/blog/tests/lib_test.php
-        #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
+        run: moodle-plugin-ci behat --profile chrome --scss-deprecations
 
-      - name: AJR2
-        if: ${{ !cancelled() }}
-        run: ls -al moodle
-
-      # - name: Behat features
-      #   id: behat
-      #   if: ${{ !cancelled() }}
-      #   run: moodle-plugin-ci behat --profile chrome --scss-deprecations
-
-      # - name: Upload Behat Faildump
-      #   if: ${{ failure() && steps.behat.outcome == 'failure' }}
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: Behat Faildump (${{ join(matrix.*, ', ') }})
-      #     path: ${{ github.workspace }}/moodledata/behat_dump
-      #     retention-days: 7
-      #     if-no-files-found: ignore
+      - name: Upload Behat Faildump
+        if: ${{ failure() && steps.behat.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: Behat Faildump (${{ join(matrix.*, ', ') }})
+          path: ${{ github.workspace }}/moodledata/behat_dump
+          retention-days: 7
+          if-no-files-found: ignore
 
       - name: Mark cancelled jobs as failed.
         if: ${{ cancelled() }}
