@@ -118,9 +118,9 @@ jobs:
         if: ${{ !cancelled() }}
         run: moodle-plugin-ci phpunit --fail-on-warning
 
-      - name: PHPUnit tests AJR
+      - name: PHPUnit tests AJR dir
         if: ${{ !cancelled() }}
-        run: moodle-plugin-ci phpunit --fail-on-warning moodle/privacy/tests/privacy/provider_test.php
+        run: moodle-plugin-ci phpunit --fail-on-warning moodle/privacy/tests/privacy
 
       - name: PHPUnit tests AJR - ls
         if: ${{ !cancelled() }}
