@@ -140,7 +140,7 @@ jobs:
 
       - name: PHPUnit tests - core_privacy_testsuite - path4
         if: ${{ !cancelled() }}
-        run: xmoodle/vendor/bin/phpunit moodle/privacy/tests/privacy/provider_test.php
+        run: moodle/vendor/bin/phpunit --fail-on-warning moodle/privacy/tests/privacy/provider_test.php
         
 
       # - name: Behat features
