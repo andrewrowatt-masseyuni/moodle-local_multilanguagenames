@@ -120,7 +120,7 @@ jobs:
 
       - name: PHPUnit tests - core_privacy_testsuite - 8
         if: ${{ !cancelled() }}
-        run: moodle/vendor/bin/phpunit --verbose moodle/blog/tests/lib_test.php
+        run: moodle/vendor/bin/phpunit --configuration moodle/phpunit.xml --verbose moodle/blog/tests/lib_test.php
         #run: moodle/vendor/bin/phpunit --configuration ${{ github.workspace }}/moodle/phpunit.xml --verbose moodle/blog/tests/lib_test.php
         #fail-on-warning moodle/privacy/tests/privacy/provider_test.php
 
