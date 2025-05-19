@@ -9,7 +9,7 @@ Feature: Convert an existing section to use multilanguage names
     | student1 | Sam1      | Student1 | student1@example.com |
     And the following "courses" exist:
     | fullname | shortname | numsections |
-    | Course 1 | C1        | 4           |
+    | Course 1 | C1        | 5           |
     And the following "course enrolments" exist:
     | user     | course | role           |
     | teacher1 | C1     | editingteacher |
@@ -131,3 +131,33 @@ Feature: Convert an existing section to use multilanguage names
     And I turn editing mode off
     Then I should see "section4part1"
     And I should see "section4part3"
+
+    # Revert to plaintext
+    Given I am on "Course 1" course homepage
+    And I turn editing mode on
+    And I edit the section "4"
+    Given I click on "Use multi-language name" "checkbox"
+    Then I should not see "Primary name"
+    And the "value" attribute of "id_name_value" "field" should contain "section4part1 | section4part3"
+    And I press "Save changes"
+    Given I am on "Course 1" course homepage
+    And I turn editing mode off
+    Then I should see "section4part1 | section4part3"
+
+    # Oversized test
+    Given I am on "Course 1" course homepage
+    And I turn editing mode on
+    And I edit the section "5"
+    Given I click on "Use multi-language name" "checkbox"
+    Then I should see "Primary name"
+    And I should see "Secondary (below)"
+    And I should see "Secondary (above)"
+    Given I set the field "name1" to "x123456789x123456789x123456789x123456789x123456789x"
+    Given I set the field "name2" to "y123456789y123456789y123456789y123456789y123456789y"
+    Given I set the field "name3" to "z123456789z123456789z123456789z123456789z123456789z"
+    And I press "Save changes"
+    Given I am on "Course 1" course homepage
+    And I turn editing mode off
+    # Text should be clipped to 32 chars maximum
+    Then I should see "x123456789x123456789x123456789x1"
+    Then I should not see "x123456789x123456789x123456789x12"
