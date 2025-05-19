@@ -27,11 +27,11 @@ Feature: Convert an existing section to use multilanguage names
     And I set the field "Section name" to "section1part1 | section1part2"
     And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    #Then I edit the section "2"
-    #And I click on "Custom" "checkbox"
-    #And I set the field "Section name" to "section2part1 | section2part2 | section2part3"
-    #And I click on "Save changes" "button"
-    #And I am on "Course 1" course homepage
+    Then I edit the section "2"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section2part1 | section2part2 | section2part3"
+    And I click on "Save changes" "button"
+    And I am on "Course 1" course homepage
     Then I edit the section "3"
     And I click on "Custom" "checkbox"
     And I set the field "Section name" to "section3part1 | section3part2 | section3part3 | section3part4"
@@ -88,18 +88,18 @@ Feature: Convert an existing section to use multilanguage names
     And the field "name1lang" matches value "Māori"
 
     # Three part test
-    #Given I am on "Course 1" course homepage
-    #Then I should see "section2part1 | section2part2"
-    #And I edit the section "2"
-    #Given I click on "Use multi-language name" "checkbox"
-    #Then I should see "Primary name"
-    #And I should see "Secondary (below)"
-    #And I should see "Secondary (above)"
-    #And the "value" attribute of "name1" "field" should contain "section2part1"
-    #And the "value" attribute of "name2" "field" should contain "section2part2"
-    #And the "value" attribute of "name3" "field" should contain "section2part3"
-    #And the "value" attribute of "id_name_shadow" "field" should contain "section2part1 | section2part2 | section2part3"
-    #And I press "Save changes"
+    Given I am on "Course 1" course homepage
+    Then I should see "section2part1 | section2part2"
+    And I edit the section "2"
+    Given I click on "Use multi-language name" "checkbox"
+    Then I should see "Primary name"
+    And I should see "Secondary (below)"
+    And I should see "Secondary (above)"
+    And the "value" attribute of "name1" "field" should contain "section2part1"
+    And the "value" attribute of "name2" "field" should contain "section2part2"
+    And the "value" attribute of "name3" "field" should contain "section2part3"
+    And the "value" attribute of "id_name_shadow" "field" should contain "section2part1 | section2part2 | section2part3"
+    And I press "Save changes"
 
     # Four part test
     Given I am on "Course 1" course homepage
@@ -116,7 +116,7 @@ Feature: Convert an existing section to use multilanguage names
 
     # Empty section name test
     Given I am on "Course 1" course homepage
-    And I edit the section "2"
+    And I edit the section "4"
     Given I click on "Use multi-language name" "checkbox"
     Then I should see "Primary name"
     And I should see "" in the "name2" "field"
