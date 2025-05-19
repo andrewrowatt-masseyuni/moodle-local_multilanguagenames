@@ -63,7 +63,7 @@ export const init = () => {
             $('#usemultilanguagename').on('change', function() {
                 if ($(this).is(':checked')) {
                     $('#id_name_customize:not(:checked)').trigger("click").addClass('hidden');
-                    $('#fitem_id_name').addClass('hidden');d
+                    $('#fitem_id_name').addClass('hidden');
 
                     $('#fitem_id_name_shadow').removeClass('hidden');
                     $('#namemultilang_group').removeClass('hidden');
