@@ -1,5 +1,5 @@
 # Multi-language names #
-[![Moodle Plugin CI](https://github.com/andrewrowatt-masseyuni/moodle-local_multilanguagenames/actions/workflows/moodle-ci.yml/badge.svg)](https://github.com/andrewrowatt-masseyuni/moodle-local_multilanguagenames/actions/workflows/moodle-ci.yml)
+[![Moodle Plugin CI](https://github.com/andrewrowatt-masseyuni/moodle-local_multilanguagenames/actions/workflows/moodle-ci.yml/badge.svg?branch=MOODLE_401)](https://github.com/andrewrowatt-masseyuni/moodle-local_multilanguagenames/actions/workflows/moodle-ci.yml)
 
 Provides a structured approach to multi-language section and activity names
 
