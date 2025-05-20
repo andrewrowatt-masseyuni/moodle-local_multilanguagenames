@@ -130,7 +130,7 @@ Feature: Convert an existing section to use multilanguage names
     And I edit the section "4"
     Given I click on "Use multi-language name" "checkbox"
     Then I should not see "Primary name"
-    And the "value" attribute of "id_name_value" "field" should contain "section4part1 | section4part3"
+    And the "value" attribute of "id_name" "field" should contain "section4part1 | section4part3"
     And I press "Save changes"
     Given I am on "Course 1" course homepage
     And I turn editing mode off
