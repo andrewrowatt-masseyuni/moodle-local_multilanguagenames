@@ -8,35 +8,35 @@ jobs:
 
     services:
       
-      # postgres:
-      #   image: postgres:14
-      #   env:
-      #     POSTGRES_USER: 'postgres'
-      #     POSTGRES_HOST_AUTH_METHOD: 'trust'
-      #   ports:
-      #     - 5432:5432
-      #   options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
-
-      mariadb:
-        image: mariadb:10
+      postgres:
+        image: postgres:16
         env:
-          MYSQL_USER: 'root'
-          MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-          MYSQL_CHARACTER_SET_SERVER: "utf8mb4"
-          MYSQL_COLLATION_SERVER: "utf8mb4_unicode_ci"
+          POSTGRES_USER: 'postgres'
+          POSTGRES_HOST_AUTH_METHOD: 'trust'
         ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 3
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 3
+
+      # mariadb:
+      #   image: mariadb:10
+      #   env:
+      #     MYSQL_USER: 'root'
+      #     MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      #     MYSQL_CHARACTER_SET_SERVER: "utf8mb4"
+      #     MYSQL_COLLATION_SERVER: "utf8mb4_unicode_ci"
+      #   ports:
+      #     - 3306:3306
+      #   options: --health-cmd="mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 3
 
     strategy:
       fail-fast: false
       matrix:
         include:
-          - php: '8.2'
+          - php: '8.1'
             # Main job. Run all checks that do not require setup and only need to be run once.
             runchecks: 'all'
             moodle-branch: 'MOODLE_405_STABLE'
-            database: 'mariadb'
+            database: 'postgres'
           # - php: '8.1'
           #   moodle-branch: 'MOODLE_405_STABLE'
           #   database: 'mariadb'
@@ -102,14 +102,6 @@ jobs:
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci mustache
 
-      - name: Grunt version AJR
-        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npx grunt --version
-
-      - name: NPM list AJR
-        if: ${{ !cancelled() && matrix.runchecks == 'all' }}
-        run: npm list --prefix /home/runner/work/moodle-local_multilanguagenames/moodle-local_multilanguagenames/moodle
-        
       - name: Grunt
         if: ${{ !cancelled() && matrix.runchecks == 'all' }}
         run: moodle-plugin-ci -vvv grunt --max-lint-warnings 0
