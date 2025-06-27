@@ -17,8 +17,10 @@ Feature: Testing standard section name behaviour
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I turn editing mode on
-    Then I edit the section "0" and I fill the form with:
-        | Section name | section0part1 |
+    Then I edit the section "0"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section0part1"
+    And I click on "Save changes" "button"
     And I change the window size to "large"
 
   Scenario: Edit section with plaintext
@@ -33,6 +35,8 @@ Feature: Testing standard section name behaviour
 
     And I turn editing mode on
     And I edit the section "1"
+    # Required for Moodle 4.1
+    And I click on "Custom" "checkbox"
     And I set the field "name" to "section 1 not multilanguage"
     And I press "Save changes"
     Given I am on "Course 1" course homepage

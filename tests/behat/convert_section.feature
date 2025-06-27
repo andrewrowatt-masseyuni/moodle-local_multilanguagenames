@@ -32,8 +32,10 @@ Feature: Convert an existing section to use multilanguage names
     And I set the field "Section name" to "section2part1 | section2part2 | section2part3"
     And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    Then I edit the section "3" and I fill the form with:
-        | Section name | section3part1 \| section3part2 \| section3part3 \| section3part4 |
+    Then I edit the section "3"
+    And I click on "Custom" "checkbox"
+    And I set the field "Section name" to "section3part1 | section3part2 | section3part3 | section3part4"
+    And I click on "Save changes" "button"
     And I change the window size to "large"
 
   Scenario: Edit sections with plaintext

@@ -24,6 +24,8 @@ Feature: Enable and use multilanguage names
     Given I am on "Course 1" course homepage
     And I turn editing mode on
     And I edit the section "1"
+    # Required for Moodle 4.1
+    And I click on "Custom" "checkbox"
     Given I click on "Use multi-language name" "checkbox"
     Then I should see "Primary name"
     And I should see "Secondary (below)"
@@ -39,6 +41,8 @@ Feature: Enable and use multilanguage names
     Given I am on "Course 1" course homepage
     And I turn editing mode on
     And I edit the section "1"
+    # Required for Moodle 4.1
+    And I click on "Custom" "checkbox"
     Given I click on "Use multi-language name" "checkbox"
     Then I should see "Primary name"
     And I should see "Secondary (below)"
