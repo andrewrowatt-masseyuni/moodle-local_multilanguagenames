@@ -73,7 +73,9 @@ export const init = () => {
                         util.convertToMultilanguageName();
                     }
 
-                    $('#name1').val(util.name1);
+                    $('#name1').val(util.name1).prop('required', true);
+                    // Note we set required to avoid issues if the multilanguage feature is not enabled for this section.
+
                     $('#name2').val(util.name2);
                     $('#name3').val(util.name3);
 
@@ -86,6 +88,9 @@ export const init = () => {
                     $('#fitem_id_name').removeClass('hidden');
                     $('#fitem_id_name_shadow').addClass('hidden');
                     $('#namemultilang_group').addClass('hidden');
+
+                    // Note we set required to avoid issues if the multilanguage feature is not enabled for this section.
+                    $('#name1').prop('required', false);
                 }
             });
 
