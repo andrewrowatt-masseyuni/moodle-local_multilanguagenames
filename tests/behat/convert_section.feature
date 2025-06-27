@@ -9,7 +9,7 @@ Feature: Convert an existing section to use multilanguage names
     | student1 | Sam1      | Student1 | student1@example.com |
     And the following "courses" exist:
     | fullname | shortname | numsections |
-    | Course 1 | C1        | 5           |
+    | Course 1 | C1        | 6           |
     And the following "course enrolments" exist:
     | user     | course | role           |
     | teacher1 | C1     | editingteacher |
@@ -32,10 +32,9 @@ Feature: Convert an existing section to use multilanguage names
     And I set the field "Section name" to "section2part1 | section2part2 | section2part3"
     And I click on "Save changes" "button"
     And I am on "Course 1" course homepage
-    Then I edit the section "3"
-    And I click on "Custom" "checkbox"
-    And I set the field "Section name" to "section3part1 | section3part2 | section3part3 | section3part4"
-    And I click on "Save changes" "button"
+    Then I edit the section "3" and I fill the form with:
+        | Section name | section3part1 \| section3part2 \| section3part3 \| section3part4 |
+    And I change the window size to "large"
 
   Scenario: Edit sections with plaintext
     When I log in as "teacher1"
