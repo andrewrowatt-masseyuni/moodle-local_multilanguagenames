@@ -24,7 +24,6 @@ namespace local_multilanguagenames\local\hooks\output;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class before_standard_top_of_body_html_generation {
-
     /**
      * Callback implementations for Multi-language section and activity names
      *
