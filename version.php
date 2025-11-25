@@ -18,7 +18,7 @@
  * Version information for Multi-language section and activity names
  *
  * @package    local_multilanguagenames
- * @copyright  2025 YOUR NAME <your@email.com>
+ * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
